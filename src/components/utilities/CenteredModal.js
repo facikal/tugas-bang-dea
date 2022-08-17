@@ -5,6 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 
 const CenteredModal = ({ children, activator }) => {
   const [show, setShow] = useState(false);
+  
   const content = show && ( // kalau show true, && (maka) eksekusi dibawah
     <Modal
       show={show}
@@ -19,7 +20,7 @@ const CenteredModal = ({ children, activator }) => {
         {children}
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={() => {setShow(false)}}>
+        <Button variant="secondary" onClick={() => { setShow(false) }}>
           Close
         </Button>
       </Modal.Footer>

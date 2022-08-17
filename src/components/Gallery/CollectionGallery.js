@@ -16,6 +16,7 @@ const CollectionGallery = () => {
     useEffect(() => {
         let isCancelled = false
         if (isCancelled == false) {
+            setLoading(true)
             axios({
                 method: "GET",
                 url: `${process.env.REACT_APP_BASEURL}/photos?_limit=${limit}`
@@ -23,7 +24,7 @@ const CollectionGallery = () => {
         }
 
         return () => isCancelled = true
-    }, [dataPhotos])
+    }, [limit])
 
     const handleLimit = (option) => {
         option === "+" ? setLimit((prev) => prev + 1) : setLimit((prev) => prev - 1)

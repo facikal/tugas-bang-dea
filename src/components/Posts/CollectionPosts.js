@@ -4,7 +4,6 @@ import CenteredModal from '../utilities/CenteredModal';
 import Loaders from '../utilities/Loaders';
 import axios from "axios";
 import "./posts.css"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleExclamation
@@ -14,25 +13,26 @@ const CollectionPosts = () => {
     const [dataPosts, setDataPosts] = useState([]);
     const [limit, setLimit] = useState(3);
     const [loading, setLoading] = useState(true);
-
+    
     useEffect(() => {
         let isCancelled = false;
         if (isCancelled == false) {
+            setLoading(true);
             axios({
                 method: "GET",
                 url: `${process.env.REACT_APP_BASEURL}/posts?_limit=${limit}`
             }).then((result) => setDataPosts(result.data)).catch((err) => console.log(err)).finally(() => setLoading(false))
         }
-
-        return () => isCancelled = true;
-    }, [dataPosts]);
-
+        
+        return () => {isCancelled = true};
+    }, [limit]);
+    
     const handleLimit = (option) => {
         option === "+" ? setLimit((prev) => prev + 1) : setLimit((prev) => prev - 1);
     }
-
+    
     if (loading) return <Loaders />
-
+    
     return (
         <React.Fragment>
             <Alert variant={"info"} className="mt-4">
