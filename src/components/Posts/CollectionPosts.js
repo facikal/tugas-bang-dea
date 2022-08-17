@@ -37,7 +37,7 @@ const CollectionPosts = () => {
         <React.Fragment>
             <Alert variant={"info"} className="mt-4">
                 <FontAwesomeIcon icon={faCircleExclamation} className="me-2" />
-                Currently showing "{limit}" {limit > 1 && "Posts"}{" "}
+                Currently showing "{limit}" {limit > 1 && "Posts"}
                 {limit === 1 && "Post"}
             </Alert>
            <ButtonGroup>

@@ -37,7 +37,7 @@ const CollectionGallery = () => {
             <Alert variant={"info"} className="mt-4">
                 Nyoba iseng2 dibikin card gini gapapa kan cuy? hehe<br />
                 <FontAwesomeIcon icon={faCircleExclamation} className="me-2" />
-                Currently showing "{limit}" {limit > 1 && "Photos"}{" "}
+                Currently showing "{limit}" {limit > 1 && "Photos"}
                 {limit === 1 && "Photo"}
             </Alert>
             <ButtonGroup className="mt-4">
