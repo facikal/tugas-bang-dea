@@ -4,7 +4,7 @@ import Loaders from '../utilities/Loaders';
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleExclamation
+    faCircleExclamation
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -45,6 +45,7 @@ const CollectionGallery = () => {
                 {limit > 1 &&
                     <button className='btn btn-outline-primary' onClick={() => handleLimit("-")}>-</button>
                 }
+                
             </ButtonGroup>
 
             <Row xs={1} md={3} className="g-4 mt-4 mb-4">

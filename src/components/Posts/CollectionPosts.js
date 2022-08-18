@@ -6,14 +6,14 @@ import axios from "axios";
 import "./posts.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleExclamation
+    faCircleExclamation
 } from "@fortawesome/free-solid-svg-icons";
 
 const CollectionPosts = () => {
     const [dataPosts, setDataPosts] = useState([]);
     const [limit, setLimit] = useState(3);
     const [loading, setLoading] = useState(true);
-    
+
     useEffect(() => {
         let isCancelled = false;
         if (isCancelled == false) {
@@ -23,16 +23,16 @@ const CollectionPosts = () => {
                 url: `${process.env.REACT_APP_BASEURL}/posts?_limit=${limit}`
             }).then((result) => setDataPosts(result.data)).catch((err) => console.log(err)).finally(() => setLoading(false))
         }
-        
-        return () => {isCancelled = true};
+
+        return () => { isCancelled = true };
     }, [limit]);
-    
+
     const handleLimit = (option) => {
         option === "+" ? setLimit((prev) => prev + 1) : setLimit((prev) => prev - 1);
     }
-    
+
     if (loading) return <Loaders />
-    
+
     return (
         <React.Fragment>
             <Alert variant={"info"} className="mt-4">
@@ -40,13 +40,13 @@ const CollectionPosts = () => {
                 Currently showing "{limit}" {limit > 1 && "Posts"}
                 {limit === 1 && "Post"}
             </Alert>
-           <ButtonGroup>
+            <ButtonGroup>
                 <button className='btn btn-outline-primary' onClick={() => handleLimit("+")}>+</button>
                 {limit > 1 &&
                     <button className='btn btn-outline-primary' onClick={() => handleLimit("-")}>-</button>
                 }
             </ButtonGroup>
-            
+
             {dataPosts.map((data, i) => {
                 return (
                     <Card className='mt-4 mb-4' key={i}>
@@ -61,7 +61,7 @@ const CollectionPosts = () => {
                                         </Card.Text>
                                     </>
                                 )}
-                            >   
+                            >
                                 <h3>Post ID: {data.id}</h3>
                                 <strong>User ID</strong>: {data.userId}
                                 <hr />
